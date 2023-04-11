@@ -41,7 +41,7 @@ class Stack2{
     size(){
         return this.items.length;
     }
-    clearn(){
+    clean(){
         this.items = [];
     }
 }
@@ -90,3 +90,6 @@ class Stack3{
 let stack2 = new Stack3();
 console.log(weak.get(stack2));
 // 使用缺点:代码的可读性减弱,且扩展该类时无法继承私有属性.
+
+// 栈的实际应用非常广泛,非常适用于需要回溯的场景
+// 因为依次放入,再从后入先取的顺序正好和存入时呈现反向.
