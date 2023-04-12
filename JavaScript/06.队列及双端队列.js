@@ -42,3 +42,41 @@ console.log((queue.items)); // [ 3, 5, 2 ]
 
 
 // 双端队列是一种将队列和栈的原则混合的数据结构.
+// 双端队列与数组的最大区别就是能从头尾取数据,而不能从中间取,能实现非常多实用的数据结构.
+
+class Deque{
+    constructor(){
+        this.items = [];
+    }
+    addFront(element){
+        this.items.unshift(element);
+    }
+    addBack(element){
+        this.items.push(element);
+    }
+    removeFront(){
+        return this.items.shift();
+    }
+    removeBack(){
+        return this.items.pop();
+    }
+    peekFront(){
+        return this.items[0];
+    }
+    peekBack(){
+        return this.items[this.items.length - 1];
+    }
+    size(){
+        return this.items.length;
+    }
+}
+
+const deque = new Deque();
+deque.addBack('back1');
+deque.addBack('back2');
+deque.addFront('front1');
+deque.addFront('front2');
+deque.removeBack();
+deque.removeFront();
+console.log(deque.peekFront()); // front1
+console.log(deque.items);   // [ 'front1', 'back1' ]
