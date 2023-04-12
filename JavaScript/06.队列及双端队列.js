@@ -77,6 +77,7 @@ deque.addBack('back2');
 deque.addFront('front1');
 deque.addFront('front2');
 deque.removeBack();
+
 deque.removeFront();
 console.log(deque.peekFront()); // front1
 console.log(deque.items);   // [ 'front1', 'back1' ]
