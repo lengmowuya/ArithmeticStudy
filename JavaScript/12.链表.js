@@ -22,7 +22,9 @@ class LinkedList{
     constructor(){
         this.count = 0;
         this.head = undefined;
-        // this.equalsFn = equalsFn;
+        this.equalsFn = (a,b)=>{
+            return a === b;
+        };
     }
     push(element){
         // 可能存在情况:链表为空和链表不为空
@@ -65,9 +67,60 @@ class LinkedList{
         }
         return undefined;
     }
+    insert(element,index){
+        if(index >= 0 && index <= this.count){
+            const node = new Node(element);
+            if(index === 0){
+                const current = this.head;
+                node.next = current;
+                this.head = node;
+            }else{
+                const previous = this.getElementAt(index-1);
+                const current = previous.next;
+                node.next = current;
+                previous.next = node;
+            }
+            this.count++;
+            return true;
+        }
+        return false;
+    }
+    indexOf(element){
+        let current = this.head;
+        for(let i = 0; i < this.count && current != undefined; i++){
+            if(this.equalsFn(element,current.element)){
+                return i;
+            }
+            current = current.next;
+        }
+        return -1;
+    }
+    remove(element){
+        const index = this.indexOf(element);
+        return this.removeAt(index);
+    }
+    size(){
+        return this.count;
+    }
+    isEmpty(){
+        return this.size() === 0;
+    }
+    toString(){
+        if(this.head == null) return '';
+        let objString = `${this.head.element}`;
+        let current = this.head.next;
+        for(let i = 1; i < this.size() && current != undefined; i++){
+            objString = `${objString},${current.element}`;
+            current = current.next;
+        }
+        return objString;
+    }
 }
 let linkList = new LinkedList();
 linkList.push('阿布');
 linkList.push('罗佬');
+linkList.push('乌鸦');
+linkList.push('five');
+console.log(linkList.toString());
 console.log(linkList.removeAt(0));
 console.log(linkList.removeAt(0));
