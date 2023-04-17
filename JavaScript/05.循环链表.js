@@ -29,14 +29,6 @@ class CircularLinkedList extends DoublyLinkedList{
         }
         this.count++;
     }
-    // insert(element,index){
-    //     if(index < 0 || index > this.count-1) return;
-    //     const node = new DoublyNode;
-    //     let current;
-    //     if(this.head == undefined){
-
-    //     }
-    // }
 }
 
 // 双向循环链表
@@ -46,6 +38,3 @@ circularList.push('阿布');
 circularList.push('鱼翅');
 circularList.push('乌鸦');
 console.log(circularList.toString());
-// console.log(circularList.head);
-// console.log(circularList.tail);
-// console.log(circularList.tail);
