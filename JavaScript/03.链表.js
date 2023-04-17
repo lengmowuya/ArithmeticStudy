@@ -40,50 +40,44 @@ class LinkedList{
             }
             current.next = node;
         }
-    this.count++;
+        this.count++;
     }
     removeAt(index){
-        if(index >= 0 && index < this.count){
-            let current = this.head;
-            if(index === 0){
-                this.head = current.next;
-            }else{
-                let previous = this.getElementAt(index-1);
-                current = previous.next;
-                previous.next = current.next;
-            }
-            this.count --;
-            return current.element;
+        if(index < 0 || index > this.count) return undefined;
+        let current = this.head;
+        if(index === 0){
+            this.head = current.next;
+        }else{
+            let previous = this.getElementAt(index-1);
+            current = previous.next;
+            previous.next = current.next;
         }
-        return undefined;
+        this.count --;
+        return current.element;
     }
     getElementAt(index){
-        if(index >= 0 && index < this.count){
-            let node = this.head;
-            for(let i = 0; i < index && node != undefined;i++){
-                node = node.next;
-            }
-            return node;
+        if(index < 0 || index > this.count) return undefined;
+        let node = this.head;
+        for(let i = 0; i < index && node != undefined;i++){
+            node = node.next;
         }
-        return undefined;
+        return node;
     }
     insert(element,index){
-        if(index >= 0 && index <= this.count){
-            const node = new Node(element);
-            if(index === 0){
-                const current = this.head;
-                node.next = current;
-                this.head = node;
-            }else{
-                const previous = this.getElementAt(index-1);
-                const current = previous.next;
-                node.next = current;
-                previous.next = node;
-            }
-            this.count++;
-            return true;
+        if(index <0 || index > this.count) return false;
+        const node = new Node(element);
+        if(index === 0){
+            const current = this.head;
+            node.next = current;
+            this.head = node;
+        }else{
+            const previous = this.getElementAt(index-1);
+            const current = previous.next;
+            node.next = current;
+            previous.next = node;
         }
-        return false;
+        this.count++;
+        return true;
     }
     indexOf(element){
         let current = this.head;
@@ -106,14 +100,14 @@ class LinkedList{
         return this.size() === 0;
     }
     toString(){
-        if(this.head == null) return '';
-        let objString = `${this.head.element}`;
+        if(this.head == undefined) return '';
+        let objString = `[${this.head.element}`;
         let current = this.head.next;
-        for(let i = 1; i < this.size() && current != undefined; i++){
+        for(let i = 0; i < this.count-1 && current != undefined;i++){
             objString = `${objString},${current.element}`;
             current = current.next;
         }
-        return objString;
+        return objString + ']';
     }
 }
 let linkList = new LinkedList();
@@ -124,3 +118,5 @@ linkList.push('five');
 console.log(linkList.toString());
 console.log(linkList.removeAt(0));
 console.log(linkList.removeAt(0));
+
+module.exports = {Node,LinkedList};
