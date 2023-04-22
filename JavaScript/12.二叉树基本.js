@@ -44,12 +44,33 @@ class BST{
             }
         }
     }
+    // 先序遍历
     inOrder(node){
         let str = '';
         if(!(node==null)){
             str += this.inOrder(node.left);
             str += node.show()+" ";
             str += this.inOrder(node.right);
+        }
+        return str;
+    }
+    // 中序遍历
+    preOrder(node){
+        let str = '';
+        if(!(node==null)){
+            str+=node.show()+' ';
+            str+=this.preOrder(node.left);
+            str+=this.preOrder(node.right);
+        }
+        return str;
+    }
+    // 后序遍历
+    postOrder(node){
+        let str = '';
+        if(!(node==null)){
+            str+=this.postOrder(node.left);
+            str+=this.postOrder(node.right);
+            str+=node.show()+' ';
         }
         return str;
     }
@@ -64,3 +85,7 @@ tree.insert(37);
 tree.insert(99);
 tree.insert(177);
 console.log(tree.inOrder(tree.root));
+console.log(tree.preOrder(tree.root));
+console.log(tree.postOrder(tree.root));
+
+module.exports = {Node,BST};
