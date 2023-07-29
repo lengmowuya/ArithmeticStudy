@@ -1,4 +1,4 @@
-// 只修改这一行下面的代码
+/* // 只修改这一行下面的代码
 function urlSlug(title) {
   let newStr = title.toLowerCase();
   // newStr = newStr.trim().split(' ');
@@ -28,4 +28,7 @@ function urlSlug(title) {
   return newStr;
 }
 // 只修改这一行上面的代码
-urlSlug(" Winter Is  Coming");
+urlSlug(" Winter Is  Coming"); */
+let num = 7;
+num **= 4;
+console.log(num);
